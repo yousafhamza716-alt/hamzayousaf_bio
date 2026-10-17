@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamza Yousaf</title>
+  <meta name="description" content="Hamza Yousaf — MS Finance Student, Finance Copywriter, Strategy Analyst focused on risk management and trading strategy testing.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1220;
+      --glow-1: rgba(16, 185, 129, 0.18);
+      --glow-2: rgba(59, 130, 246, 0.16);
+      --card: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #e8edf5;
+      --muted: #94a3b8;
+      --accent: #10b981;
+      --accent-2: #3b82f6;
+      --btn-bg: rgba(255, 255, 255, 0.06);
+      --btn-hover: rgba(255, 255, 255, 0.12);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f4f7fb;
+        --glow-1: rgba(16, 185, 129, 0.15);
+        --glow-2: rgba(59, 130, 246, 0.12);
+        --card: rgba(255, 255, 255, 0.8);
+        --border: rgba(15, 23, 42, 0.08);
+        --text: #0f172a;
+        --muted: #64748b;
+        --btn-bg: #ffffff;
+        --btn-hover: #eef2f7;
+      }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      background-image:
+        radial-gradient(circle at 15% 10%, var(--glow-1), transparent 45%),
+        radial-gradient(circle at 85% 90%, var(--glow-2), transparent 45%);
+      background-attachment: fixed;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 460px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 28px 30px;
+      text-align: center;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      animation: rise 0.6s ease-out both;
+    }
+
+    .avatar {
+      width: 104px; height: 104px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+    .avatar-inner {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 36px; font-weight: 700;
+      overflow: hidden;
+    }
+    .avatar-inner img { width: 100%; height: 100%; object-fit: cover; }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px; font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .headline {
+      font-size: 14px; color: var(--accent);
+      font-weight: 600; margin-bottom: 16px;
+    }
+
+    .tags {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 8px; margin-bottom: 30px;
+    }
+    .tag {
+      font-size: 12.5px; font-weight: 500; color: var(--muted);
+      border: 1px solid var(--border); background: var(--btn-bg);
+      padding: 6px 12px; border-radius: 999px;
+    }
+
+    .links { display: flex; flex-direction: column; gap: 14px; }
+
+    .btn {
+      display: flex; align-items: center; gap: 14px;
+      width: 100%;
+      text-decoration: none; color: var(--text);
+      background: var(--btn-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      font: inherit; font-size: 15.5px; font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .btn:hover, .btn:focus-visible {
+      transform: translateY(-2px);
+      background: var(--btn-hover);
+      border-color: var(--accent);
+      outline: none;
+    }
+    .icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+    }
+    .icon svg { width: 20px; height: 20px; }
+    .label { flex: 1; text-align: left; }
+    .label small {
+      display: block; font-size: 12.5px; font-weight: 400;
+      color: var(--muted); margin-top: 2px; overflow-wrap: anywhere;
+    }
+    .arrow { color: var(--muted); transition: transform 0.25s ease; }
+    .btn:hover .arrow { color: var(--accent); }
+    .btn[aria-expanded="true"] .arrow { transform: rotate(90deg); color: var(--accent); }
+
+    /* Strategy Analyst panel */
+    .panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s ease;
+    }
+    .panel.open { grid-template-rows: 1fr; }
+    .panel-inner { overflow: hidden; }
+    .panel-body {
+      text-align: left;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      background: var(--btn-bg);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 2px;
+    }
+    .panel-body h3 {
+      font-size: 15px; font-weight: 700; margin-bottom: 6px; line-height: 1.4;
+    }
+    .panel-body p {
+      font-size: 13.5px; color: var(--muted); line-height: 1.6; margin-bottom: 12px;
+    }
+    .panel-body ul { list-style: none; display: grid; gap: 8px; }
+    .panel-body li {
+      font-size: 13.5px; line-height: 1.5;
+      display: flex; gap: 8px;
+    }
+    .panel-body li::before { content: "▸"; color: var(--accent); flex-shrink: 0; }
+
+    .callout {
+      display: flex; gap: 12px; align-items: flex-start;
+      margin-top: 16px; padding: 14px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(59,130,246,0.12));
+      border: 1px solid var(--border);
+    }
+    .callout-icon {
+      width: 34px; height: 34px; flex-shrink: 0;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+    }
+    .callout-icon svg { width: 18px; height: 18px; }
+    .callout strong { display: block; font-size: 14px; margin-bottom: 4px; }
+    .callout div > span { font-size: 13px; color: var(--muted); line-height: 1.55; display: block; }
+
+    .copy-note {
+      font-size: 12px; color: var(--accent);
+      height: 16px; margin-top: 8px;
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .copy-note.show { opacity: 1; }
+
+    footer { margin-top: 26px; font-size: 12px; color: var(--muted); }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 400px) {
+      .card { padding: 32px 18px 24px; border-radius: 20px; }
+      h1 { font-size: 26px; }
+      .avatar { width: 92px; height: 92px; }
+      .btn { padding: 14px; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="avatar">
+      <!-- Photo lagani ho to "HY" ki jagah: <img src="photo.jpg" alt="Hamza Yousaf"> -->
+      <div class="avatar-inner">HY</div>
+    </div>
+
+    <h1>Hamza Yousaf</h1>
+    <div class="headline">Strategy Analyst · Risk Management</div>
+
+    <div class="tags">
+      <span class="tag">MS Finance Student</span>
+      <span class="tag">Finance Copywriter</span>
+      <span class="tag">Government Employee</span>
+      <span class="tag">Financial Market Analyst</span>
+    </div>
+
+    <nav class="links">
+      <a class="btn" href="mailto:yousafhamza716@gmail.com" id="emailBtn">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        </span>
+        <span class="label">Email Contact<small>yousafhamza716@gmail.com</small></span>
+        <span class="arrow">→</span>
+      </a>
+
+      <button class="btn" id="strategyBtn" aria-expanded="false" aria-controls="strategyPanel">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/><path d="M17 8h3v3"/></svg>
+        </span>
+        <span class="label">Strategy Analyst<small>Risk management &amp; strategy testing</small></span>
+        <span class="arrow">→</span>
+      </button>
+
+      <div class="panel" id="strategyPanel">
+        <div class="panel-inner">
+          <div class="panel-body">
+            <h3>Risk Management &amp; Strategy Analysis</h3>
+            <p>Helping individuals and businesses make better financial decisions through structured risk assessment, market research and data-driven strategy.</p>
+            <ul>
+              <li>Risk management &amp; credit risk assessment</li>
+              <li>Credit risk analysis and NPL trends</li>
+              <li>Banking sector performance &amp; regulatory insight (SBP)</li>
+              <li>Financial market analysis &amp; research-based writing</li>
+            </ul>
+            <div class="callout">
+              <span class="callout-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-2.5L14 9V3"/><path d="M7 15h10"/></svg>
+              </span>
+              <div>
+                <strong>Strategy Testing Support</strong>
+                <span>I help traders test and refine their strategies on any pair, whether forex, crypto, commodities or indices. This covers backtesting on historical data, risk-to-reward and drawdown analysis, and position-sizing rules, so you trade with data-backed confidence instead of guesswork.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="copy-note" id="copyNote">Email copied to clipboard</div>
+
+    <footer>© 2026 Hamza Yousaf</footer>
+  </main>
+
+  <script>
+    // Strategy Analyst panel toggle
+    const sBtn = document.getElementById('strategyBtn');
+    const panel = document.getElementById('strategyPanel');
+    sBtn.addEventListener('click', () => {
+      const open = panel.classList.toggle('open');
+      sBtn.setAttribute('aria-expanded', open);
+    });
+
+    // Email: mail app khulne ke sath email copy bhi ho jaye (mail app na ho to bhi kaam aaye)
+    document.getElementById('emailBtn').addEventListener('click', () => {
+      try {
+        navigator.clipboard.writeText('yousafhamza716@gmail.com').then(() => {
+          const n = document.getElementById('copyNote');
+          n.classList.add('show');
+          setTimeout(() => n.classList.remove('show'), 2000);
+        });
+      } catch (e) {}
+    });
+  </script>
+</body>
+</html>
